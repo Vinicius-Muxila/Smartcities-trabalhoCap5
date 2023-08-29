@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -46,6 +48,82 @@ public class Ferias {
 	@Column
 	private String observacao;
 	
+	@ManyToOne
+	@JoinColumn(name = "id_programacao_ferias")
+	private ProgramacaoFerias programacao;
+
+	public Ferias(int id, Calendar periodoAquisitivo, Calendar dataInicio, Calendar dataTermino, String situacao,
+			String observacao) {
+		super();
+		this.id = id;
+		this.periodoAquisitivo = periodoAquisitivo;
+		this.dataInicio = dataInicio;
+		this.dataTermino = dataTermino;
+		this.situacao = situacao;
+		this.observacao = observacao;
+	}
+
+	public Ferias() {
+		super();
+		
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+
+	}
+
+	public Calendar getPeriodoAquisitivo() {
+		return periodoAquisitivo;
+	}
+
+	public void setPeriodoAquisitivo(Calendar periodoAquisitivo) {
+		this.periodoAquisitivo = periodoAquisitivo;
+	}
+
+	public Calendar getDataInicio() {
+		return dataInicio;
+	}
+
+	public void setDataInicio(Calendar dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+	public Calendar getDataTermino() {
+		return dataTermino;
+	}
+
+	public void setDataTermino(Calendar dataTermino) {
+		this.dataTermino = dataTermino;
+	}
+
+	public String getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(String situacao) {
+		this.situacao = situacao;
+	}
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
+
+	public ProgramacaoFerias getProgramacao() {
+		return programacao;
+	}
+
+	public void setProgramacao(ProgramacaoFerias programacao) {
+		this.programacao = programacao;
+	}
 	
 	
 }
